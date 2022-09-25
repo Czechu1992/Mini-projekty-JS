@@ -14,18 +14,18 @@ const checkFields = () => {
     if((priceInput.value !== '' && priceInput.value > 0 ) && (peopleInput.value !== '' && peopleInput.value > 0 ) && tipSelect.value != 0 ){
 
         clearErrors();
-        const price = Number(priceInput.value );
-        const people = Math.floor( Number(peopleInput.value ));
-        const tipProcent = Number(tipSelect.value );
+        const price = parseFloat(priceInput.value );
+        const people = parseInt(peopleInput.value);
+        const tipProcent = parseFloat(tipSelect.value );
 
         const tip = (price + (price * tipProcent ))/ people;
-        
         
         costInfo.style.display = 'block';
         cost.textContent = tip.toFixed(2); 
     
         clearInputs();
     } else { 
+        costInfo.style.display = 'none';
         checkInput(priceInput,priceError,"Pole nie może być puste a jego wartosć musi być większa od 0" );
         checkInput(peopleInput,peopleError,"Pole nie może być puste a jego wartosć musi być większa od 0" );
         checkInput(tipSelect,tipError,"Wybierz napiwek" );
